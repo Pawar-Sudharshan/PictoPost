@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="/posts" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+                    viewBox="0 0 24 24">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <strong>PictoPost</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="collapse bg-dark text-white" id="navbarHeader">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-sm-8 col-md-7">
+                    <h4>About</h4>
+                    <p>Add some information about the album below, the author, or any other background context. Make it
+                        a few
+                        sentences long so folks can pick up some informative tidbits. Then, link them off to some social
+                        networking
+                        sites or contact information.</p>
+                </div>
+                <div class="col-sm-4 offset-md-1">
+                    <h4>Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Follow on X</a></li>
+                        <li><a href="#" class="text-white">Like on Facebook</a></li>
+                        <li><a href="#" class="text-white">Email me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container m-5">
+        <h5>ID: <%= post.id %>
+        </h5>
+        <h6>Username: <%= post.username %>
+        </h6>
+        <h6 class="fst-italic">@<%= post.username.toLowerCase() %>
+        </h6>
+
+        <% if(post.url) { %>
+            <div class="mb-3">
+                <label class="form-label">Current Image:</label><br />
+                <img src="<%= post.url %>" alt="Post Image" class="img-fluid rounded" style="max-width: 300px;" />
+            </div>
+            <% } %>
+
+                <form action="/posts/<%= post.id %>?_method=PATCH" method="POST" enctype="multipart/form-data"
+                    novalidate>
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Username</label>
+                        <input type="text" id="inputUsername" name="username" class="form-control"
+                            value="<%= post.username %>" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputContext" class="form-label">Context</label>
+                        <textarea id="inputContext" name="context" class="form-control" rows="3"
+                            required><%= post.context %></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputImageUrl" class="form-label">Image URL</label>
+                        <input type="url" id="inputImageUrl" name="imageUrl" class="form-control"
+                            pattern="^$|https?://.+"
+                            value="<%= post.url && !post.url.startsWith('/') ? post.url : '' %>"
+                            placeholder="Paste new image URL here (optional)" />
+
+                        <div class="form-text">Or upload a new image below. Leave both blank to keep the current image.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputImageFile" class="form-label">Upload New Image File</label>
+                        <input type="file" id="inputImageFile" name="imageFile" accept="image/*" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+    </div>
+<footer class="text-white py-5 bg-dark mt-auto">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#" class="text-white">Back to top</a>
+    </p>
+    <p class="mb-1">© 2025 PictoPost. All rights reserved.</p>
+    <p class="mb-0">
+      New to PictoPost? <a href="/posts/new" class="text-white text-decoration-underline">Create your first post</a> or read our
+      <a href="index.md" class="text-white text-decoration-underline">Getting Started Guide</a>.
+    </p>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
