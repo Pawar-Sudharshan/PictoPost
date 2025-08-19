@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 
 // App and Server setup
 const app = express();
-const port = 8080;
+const port = 3000;
 
 
 // Serve static files
@@ -23,32 +23,32 @@ let posts = [
   {
     id: uuidv4(),
     username: "Rahul",
-    context: "I got selected in skillcraft tech.",
+    context: "Peace and divinity shining bright at the Golden Temple ✨🌙",
     url: "/images/image2.png"
   },
   {
     id: uuidv4(),
     username: "Dasharath",
-    context: "I love solving problems in leetcode.",
+    context: "Colors of joy and togetherness—celebrating Holi in full spirit! 🎨🌈",
     url: "/images/image3.png"
   },
   {
     id: uuidv4(),
     username: "Vikram",
-    context: "I love solving problems in leetcode.",
+    context: "Chasing dreams behind the wheel of a Benz—luxury redefined! 🚗✨.",
     url: "/images/image4.png"
   },
   {
     id: uuidv4(),
     username: "Venky",
-    context: "I love solving problems in leetcode.",
+    context: "Timeless beauty and heritage—standing tall at the Charminar! 🕌✨",
     url: "/images/image5.png"
   },
   {
     id: uuidv4(),
     username: "Harsha",
-    context: "I love solving problems in leetcode.",
-    url: "/images/image4.png"
+    context: "Unconditional love and endless joy—life is better with pets by your side! 🐾❤️",
+    url: "/images/image6.png"
   }
 ];
 
